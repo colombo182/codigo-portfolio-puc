@@ -1,0 +1,57 @@
+<!--
+# App de Corrida
+Preço Base da Corrida
+Custo Fixo
+Horários e regiões de maior movimento
+
+- distância_km
+- tempo_minutos
+-->
+
+<input placeholder="Distância em km (decimal em '.')" id="dist"/>
+<input placeholder="Tempo em minutos" id="tempo"/>
+<button onclick="CalculaCorrida()">Calcula preço da corrida </button>
+
+<script>
+
+    function FormataMoedaBR(valor) {
+        return Number(valor).toFixed(2).replace('.', ',')
+    }
+    function FormataMoedaUSA(valor) {
+        return Number(valor).toFixed(2).replace(',', '.')
+    }
+    function CalculaCorrida() {
+        // [PROCESSAMENTO]
+        // Valida na entrada / Fail Fast Validation
+        function valida_valor(valor) {
+        if (FormataMoedaUSA(valor) > 0)
+            alert('O valor da corrida é: ' + FormataMoedaBR(valor) + ' R$')
+        else
+            alert('Entrada inválida. Por favor, verifique os dados inseridos e tente novamente.')
+        }
+        // Se tiver a distância_km, segue para o proximo passo
+        // Senão, para por aqui
+        // Se tiver o tempo_minutos, segue para o proximo passo
+        // Senão, para por aqui
+
+        //Organizar as entradas e fazer a regra de negócio (normalmente está no back-end)
+        
+        var tarifa_dinamica = 1.48;
+        
+        var distância_km = dist.value * tarifa_dinamica;
+
+
+        if (tempo.value > 0)
+            var tempo_minutos = Number(tempo.value);
+        else
+            var tempo_minutos = tempo.value;
+
+        if (distância_km != 0 && tempo_minutos != 0)
+            var valor_corrida = distância_km + tempo_minutos;
+
+            // [SAÍDA]
+            valida_valor(valor_corrida)
+            valor_corrida = FormataMoedaBR(valor_corrida)
+    }
+
+</script>

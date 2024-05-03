@@ -1,0 +1,57 @@
+<script>
+    console.log('[Fila/Queue]');
+    // Qualquer tipo de dado, uma atrás da outra
+    // Quem entra primeiro, sai primeiro (First In, First Out)
+    // Dica: Hacker Rank (solução em avaliação técnica e entrevista remota para contratação de desenvolvedores)
+
+    var fila = [
+        'scripts.js',
+        'style.css',
+        'imagem.png',
+    ];
+    // Adiciona algúem na fila
+    fila.push('doguinho.jpg');
+    // Remove o primeiro da fila
+    fila.shift();
+
+    // ======================================
+    // Receita para criar filas 
+    // ======================================
+    // - enqueue - enfileirar
+    // - dequeue - desenfileirar
+
+    class Queue { // Class: Receita para criar objetos
+
+        constructor(){
+            this.data = [];
+        }
+        enqueue(item){
+            this.data.push(item);
+        }
+        dequeue(){
+            this.data.shift();
+        }
+        print(){
+            console.log(this.data);
+        }
+    }
+
+    // Design do código primeiro
+    var requests = new Queue();
+    // Open Closed
+    // Open: Aberto para extensão
+    // Closed: Fechado para modificação
+    requests.enqueue('scripts.js');
+    requests.print();
+    requests.dequeue();
+    requests.print();
+    requests.enqueue('style.css');
+    requests.print();
+    requests.enqueue('imagem.png');
+    requests.dequeue();
+    requests.print();
+    requests.enqueue('doguinho.jpg');
+
+    requests.print();
+
+</script>

@@ -1,0 +1,40 @@
+<script>
+    // Dica: Loupe - Site para entendimento de como a pilha de chamadas/loop de eventos/fila de retorno de chamada do JavaScript interage entre si
+    // Dica: History API Mozilla - API para manipular historico
+    // LIFO (Last In First Out) - Stack
+    class BrowserHistoryStack { // Class: Receita para criar objetos
+
+        constructor(){
+            this.cursor = 0;
+            this.data = [];
+        }
+        push(item){
+            this.cursor++;
+            this.data.push(item);
+        }
+        back(){
+            this.cursor--;
+            this.data.pop();
+        }
+        clear(){
+            this.cursor = 0;
+            this.data = [];
+        }
+        print(){
+            console.log('Cursor:', this.cursor);
+            console.log('Itens atuais:', this.data);
+        }
+    }
+
+    console.log('Pilha/Stack')
+
+    const history = new BrowserHistoryStack();
+    
+    history.push('https://google.com');
+    history.push('https://youtube.com');
+    history.push('https://facebook.com');
+    history.print();
+    history.back();
+    history.print();
+
+</script>
