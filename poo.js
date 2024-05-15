@@ -54,11 +54,11 @@ console.log(z);
 // funcionalidades -> funções (métodos)
 // EM Javascript, atributos e métodos são MEMBROS de um objeto, cada um com um nome e um valor
 
-var nomeDoObjeto = {
-    nomeMembro1: valorMembro1,
-    nomeMembros2: valorMembros2,
-    nomeMembros3: valorMembros3
-};
+// var nomeDoObjeto = {
+//     nomeMembro1: valorMembro1,
+//     nomeMembros2: valorMembros2,
+//     nomeMembros3: valorMembros3
+// };
 
 var pessoa = {
     nome: 'Joaquim',
@@ -73,7 +73,7 @@ var pessoa = {
 // objeto.propriedade
 // objeto ['propriedade']
 
-// Atribuilção - duas formas:
+// Atribuição - duas formas:
 // objeto.propriedade = valor
 // objeto ['propriedade'] = valor
 
@@ -84,7 +84,7 @@ var pessoa = {
 
 // Em Javascript QUASE TUDO é objeto
 // Javascript possui dois tipos de dados: 
-// Tipos de Valor - representações de valores imutáveis:
+// Tipos de Valor (tipos primitivos) - representações de valores imutáveis:
 // Number
 // String
 // Boolean
@@ -92,6 +92,67 @@ var pessoa = {
 // Undefined
 // Null
 
-// Tipos de Referência - representações de valores mutáveis e complexos, quando comparados com os Tipos de valor:
+// Tipos de Referência (tipos definidos pelo usuário) - representações de valores mutáveis e complexos, quando comparados com os Tipos de valor:
 // Object (Object, Function, Array)
 
+const empregado = {
+    nome: 'Joaquim',
+    salarioBase: 10000,
+    valorHoraExtra: 50,
+    qtHorasExtra: 2,
+    calculaSalario() {
+        return this.salarioBase + (this.qtHorasExtra * this.valorHoraExtra);
+    }
+}
+console.log(empregado.calculaSalario());
+
+// Orientação a objetos - Conceitos principais
+// Encapsulamento
+// Abstração
+// Herança
+// Polimorfismo
+
+// Encapsulamento:
+// Permitir atributos e métodos sejam agrupados em uma interface bem definida, para manipulação de forma eficiente
+// Isolaento entre partes de um programa
+// Saber o que um objeto faz e não como ele faz
+// Proteção de atributos
+
+const empregado1 = {
+    nome: 'Joaquim',
+    salarioBase: 5000,
+    valorHoraExtra: 50,
+    qtHorasExtra: 5,
+    calculaSalario() {
+        return this.salarioBase + (this.qtHorasExtra * this.valorHoraExtra);
+    }
+}
+console.log(empregado1.calculaSalario());
+
+// Abstração:
+// POO é amplamente baseada na abstração digital da vida real
+// Objetos são representações/abstrações do que queremos implementar do que observamos no mundo ao nosso redor
+// Buscamos essencial e deixamos de lado o que não importa
+
+// Carro:
+// Atributos:
+// Marca
+// Modelo
+// ano
+// cor
+// velocidade
+// velocidadeMaxima
+
+// Metodos:
+// ligar()
+// acelerar()
+// frear()
+// buzinar()
+
+// Herança:
+// Permite compartilhamento de atributos e métodos entre objetos
+// Reaproveita código e agrupa o que é comum a diferentes objetos
+// Identificar e agrupar comportamentos generalizados ou especificos
+// Elimina redundâncias
+
+// Usuário, administrador e Operador tem 
