@@ -114,7 +114,7 @@ console.log(empregado.calculaSalario());
 
 // Encapsulamento:
 // Permitir atributos e métodos sejam agrupados em uma interface bem definida, para manipulação de forma eficiente
-// Isolaento entre partes de um programa
+// Isolamento entre partes de um programa
 // Saber o que um objeto faz e não como ele faz
 // Proteção de atributos
 
@@ -133,8 +133,10 @@ console.log(empregado1.calculaSalario());
 // POO é amplamente baseada na abstração digital da vida real
 // Objetos são representações/abstrações do que queremos implementar do que observamos no mundo ao nosso redor
 // Buscamos essencial e deixamos de lado o que não importa
+// Entender o problema que tem de ser resolvido e como implementar
 
-// Carro:
+// Carro - Nome
+
 // Atributos:
 // Marca
 // Modelo
@@ -155,4 +157,56 @@ console.log(empregado1.calculaSalario());
 // Identificar e agrupar comportamentos generalizados ou especificos
 // Elimina redundâncias
 
-// Usuário, administrador e Operador tem 
+// Usuário, administrador e Operador tem atributos relacionados, afinal operadores e administradores +
+// + também são usuários, afinal todos tem id, e-mail e senha, além de login(), trocarEmail() e trocarSenha()
+// Administrador e Operador tem atributos diferentes, mas ambos tem todos atributos que um Usuario (Usuário é uma +
+// + generalização de administrador e operador, e estes são uma especialização de um usuário)
+
+// Polimofismo (muitsa formas):
+// Através da herança é possível alterar um comportamento herdado de um objeto-pai
+// Forte separação de interesses
+// Limpeza de código, removendo lógica excedente
+
+// Cada objeto tem seus interesses:
+// Operador precisar trocarSenha(), porém usuário não. Então haverá uma sobrescrita de método
+// trocarSenha() (métodos com o mesmo nome e assinatura(mesmo nome e atributos)) em diferentes objetos, relacionados por herança
+// trocarSenha(valor) (métodos com o mesmo nome, mas diferentes assinaturas) em diferentes objetos, relacionados por herança
+// Javascript NÃO SUPORTA sobrecarga
+
+// Vantagens e ganhos:
+// Encapsulamento - Redução complexidade / Proteção de dados
+// Abstração - Redução complexidade / Maior reuso
+// Herança - Eliminar redundâncias no código
+// Polimorfismo - ELiminar lógica desnecessária no código
+
+// Criando objetos:
+// Literais
+
+// var nomeDoObjeto1 = {
+//    nomeMembro1: valorMembro1,
+//    nomeMembros2: valorMembros2,
+//    nomeMembros3: valorMembros3
+//};
+
+// Fábricas (ensinar função para criar objetos)
+
+// function criarPessoa (nome, idade, sexo) {
+//     return {
+//         nome: nome,
+//         idade: idade,
+//         sexo: sexo
+//     }
+// }
+// 
+// const pessoa1 = criarPessoa('Joaquim', 25, 'Masculino');
+// const pessoa2 = criarPessoa('Maria', 30, 'Feminino');
+// const pessoa3 = criarPessoa('Pedro', 35, 'Masculino');
+
+// Construtores (aplicação entre construtor e fábrica são diferentes)
+
+
+
+// Protótipos
+
+
+// Classes
