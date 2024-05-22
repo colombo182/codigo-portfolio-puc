@@ -203,10 +203,263 @@ console.log(empregado1.calculaSalario());
 // const pessoa3 = criarPessoa('Pedro', 35, 'Masculino');
 
 // Construtores (aplicação entre construtor e fábrica são diferentes)
+// Funções que criam objetos
+function Pessoa() {
+    this.nome = ['Fulano', 'de Tal'];
+    this.anoDeNascimento = 1990;
+    this.profissao = "Estudante";
+    this.calculaIdade = function () {
+        return new Date().getFullYear() - this.anoDeNascimento;
+    }
+};
 
+const pessoa1 = new Pessoa();
+console.log(pessoa1);
 
+// this é uma referência ao objeto que chamou a função, nesse caso, Pessoa
+// Quando preisamos acessar um membro dentro do próprio objeto, usamos o this
+
+// Construtor Object()
+
+const pessoaa = new Object();
+
+pessoaa.nome = ['Fulano', 'de Tal'];
+pessoaa.anoDeNascimento = 1994;
+pessoaa.profissao = "Estudante";
+pessoaa.calculaIdade = function () {
+    return new Date().getFullYear() - this.anoDeNascimento;
+}
+
+console.log(pessoaa)
+console.log(pessoaa.calculaIdade())
 
 // Protótipos
 
+// Mecanismo de herança entre objetos
+// pegar exemplo de Pessoa()
+
+const pessoa_prototype = new Pessoa();
+console.log(pessoa_prototype.valueOf())
+
+// Javascript é descrita como uma linguagem baseada em protótipos
+// Objetos podem ter um objeto de protótipo
+// Modelo que fornece atributos e métodos
+// Cadeia de protótipos (prototype chain) - objeto de protótipo pode ter outros objetos
+
+// Formas de acessar:
+// Object.getPrototypeOf()
+// __proto__ (somente na console)
+// Em funções construtoras existe a propriedade prototype
+// Método Object.create() usa protótipos
+
+const pessoinha = new Object()
+
+console.log('pessoinha');
+console.log(Object.getPrototypeOf(pessoinha));
+
+const pessoinha2 = Object.create(pessoaa)
+
+console.log('pessoinha2');
+console.log(Object.getPrototypeOf(pessoinha2));
+
+// Herança prototipada
+
+function Pessoaaa(nome, anoDeNascimento, profissao) {
+    this.nome = nome;
+    this.anoDeNascimento = anoDeNascimento;
+    this.profissao = profissao;
+    this.calculaIdade = function () {
+        return new Date().getFullYear() - this.anoDeNascimento;
+    }
+}
+
+const pessoinha3 = new Pessoaaa(['Fulano', 'de Tal'], 1998,'Estudante');
+
+console.log('pessoinha3');
+console.log(pessoinha3);
+
+Pessoaaa.prototype.saudar = function(){
+    console.log('Olá');
+};
+
+console.log('pessoinha3-2');
+console.log(pessoinha3.saudar());
+
+const pessoinha22 = new Pessoaaa(['Fulano', 'de Tal'], 1985,'Estudante');
+console.log(pessoinha22.saudar());
+
 
 // Classes
+
+// Modelos para criar objetos
+
+class People {
+    constructor (nome, anoDeNascimento, profissao) {
+        this.nome = nome;
+        this.anoDeNascimento = anoDeNascimento;
+        this.profissao = profissao;
+    };
+    ola() {
+        console.log('Ola');
+    };
+    calculaIdade() {
+        return new Date().getFullYear() - this.anoDeNascimento;
+    };
+};
+
+const person = new People('Fulano', 1990, 'Estudante');
+
+console.log(person);
+
+// Herança
+
+class Estudante extends People {
+    constructor (nome, anoDeNascimento, profissao, matricula) {
+        super(nome, anoDeNascimento, profissao);
+        this.matricula = matricula;
+    };
+};
+
+const aluno = new Estudante('Fulano', 1990, 'Estudante', 123456);
+
+console.log(aluno)
+
+// Polimorfismo
+
+class Estudante1 extends People {
+    constructor (nome, anoDeNascimento, profissao, matricula) {
+        super(nome, anoDeNascimento, profissao);
+        this.matricula = matricula;
+    };
+    ola() {
+        super.ola();
+        console.log(' colega!');
+    };
+};
+
+const aluno1 = new Estudante1('Fulano', 1990, 'Estudante', 123456);
+
+console.log(aluno1)
+console.log(aluno1.ola())
+
+// Referência
+
+function criarPessoa () {
+    return {
+        nome: 'Fulaninho',
+        anoDeNascimento: 2000,
+        profissao: 'Estudante'
+    }
+};
+
+const pessoa11 = criarPessoa();
+const pessoa22 = pessoa11;
+
+pessoa22.anoDeNascimento = 1983;
+
+console.log(pessoa11)
+console.log(pessoa22)
+
+const pessoa33 = criarPessoa();
+
+pessoa33.anoDeNascimento = 2005;
+console.log(pessoa33)
+
+// Altera no pessoa22, altera no pessoa11 também
+
+// Adicionar atributos ou métodos - objeto.novo_membro = algo;
+// objeto.membro = algo;
+
+pessoa33.apelido = "pessoinha";
+console.log(pessoa33)
+
+// Remover atributos ou métodos - delete objeto.novo_membro;
+
+delete pessoa33.apelido
+console.log(pessoa33)
+
+// Alterar atributos ou métodos de um protótipo
+
+// Herança prototipada - Altera todos os objetos criados pelo protótipo
+
+criarPessoa.prototype.apelido = "pessoinha feia";
+
+const pessoa44 = criarPessoa();
+
+console.log(pessoa11)
+console.log(pessoa22)
+console.log(pessoa33)
+console.log(pessoa44)
+
+// Membros e suas propriedades:
+//Podem ser de objetos (cada objeto possui o seu) ou estáticos (compartilhados)
+
+// Atributos estáticos - Dados que valem para qualquer objeto de um tipo ou classe
+// Para usar, não precisa criar um objeto
+
+class Pessoaa1 {
+    static NOME_CLASSE = "Pessoa";
+    constructor (nome, anoDeNascimento, profissao) {
+        this.nome = nome;
+        this.anoDeNascimento = anoDeNascimento;
+        this.profissao = profissao;
+    };
+    ola() {
+        console.log('Ola');
+    };
+    calculaIdade() {
+        return new Date().getFullYear() - this.anoDeNascimento;
+    };
+};
+
+console.log(Pessoaa1.NOME_CLASSE)
+
+// Visibilidade (encapsulacamento)
+// Atributos e métodos podem ser públicos ou privados
+
+// Públicos - Padrão, não é necessário fazer nada
+
+// Privados - ariáveis locais e identifiadores pré-fixados
+
+// Variáveis locais
+
+function Pessoinha () {
+    let nome = 'Fulano';
+    let anoDeNascimento = 1990;
+    let profissao = 'Estudante';
+    let calculaIdade = function () {
+        return new Date().getFullYear() - anoDeNascimento;
+    }
+};
+
+const persona = new Pessoinha();
+
+console.log(persona)
+
+// Identificadores pré-fixados
+
+class Estudantes extends People {
+    #matricula;
+    constructor (nome, anoDeNascimento, profissao, matricula) {
+        super(nome, anoDeNascimento, profissao);
+        this.#matricula = matricula;
+    this.#ola();
+    };
+    getMatricula() {
+        return this.#matricula;
+    };
+    setMatricula(valor) {
+        this.#matricula = valor;
+    };
+    #ola() {
+        super.ola();
+        console.log(' colega!');
+    };
+};
+
+const aluninho = new Estudantes('Fulano', 1990, 'Estudante', 123456);
+
+console.log(aluninho)
+console.log(aluninho.getMatricula())
+aluninho.setMatricula(1234567)
+console.log(aluninho.getMatricula())
