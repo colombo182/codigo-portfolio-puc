@@ -419,7 +419,7 @@ console.log(Pessoaa1.NOME_CLASSE)
 
 // Públicos - Padrão, não é necessário fazer nada
 
-// Privados - ariáveis locais e identifiadores pré-fixados
+// Privados - variáveis locais e identificadores pré-fixados
 
 // Variáveis locais
 
@@ -463,3 +463,33 @@ console.log(aluninho)
 console.log(aluninho.getMatricula())
 aluninho.setMatricula(1234567)
 console.log(aluninho.getMatricula())
+
+
+// Orientação a objeto
+
+// Paradigma de programação = define regra/estilo/estrutura de codificação
+
+// Suportado por diferentes tecnoogias/linguagens
+
+// Baseada em "pilares" - abstração, encapsulamento, herança e polimorfismo
+
+// Largamente empregado na indústria
+
+class Exemplo {
+    constructor (nome, idade) {
+        this.nome = nome;
+        this.idade = idade;
+    };
+};
+
+var objetoo = new Exemplo("um nome")
+
+console.log(objetoo)
+
+function umaFuncao(a, b="fully", c, d){
+
+    console.log(a +  " " + b + " " + c + " - " + d)
+
+}
+
+umaFuncao("Desenvolvimento","full","stack", "pucrs", "UOL",'sadshsakeashkj')
